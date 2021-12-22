@@ -76,3 +76,11 @@ static 변수의 값을 할당한다.
 
 ### 네이티브 메서드 라이브러리
 - C, C++로 작성된 라이브러리
+
+## 참고자료
+---
+[더 자바, 코드를 조작하는 다양한 방법](https://www.inflearn.com/course/the-java-code-manipulation/dashboard)
+
+[DZone JVM Architecture Explain](https://dzone.com/articles/jvm-architecture-explained)
+
+[JVM 스펙](https://docs.oracle.com/javase/specs/jvms/se11/html/)
