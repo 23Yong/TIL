@@ -17,3 +17,4 @@ Today I Learned 공부한 것들을 정리합니다.
 | **5** |**[MessageSource](./SpringCore/MessageSource.md)**|
 | **6** |**[ApplicationEventPublisher](./SpringCore/ApplicationEventPublisher.md)**|
 | **7** |**[ResourceLoader](./SpringCore/ResourceLoader.md)**|
+| **8** |**[리소스 추상화](./SpringCore/리소스추상화.md)**|
