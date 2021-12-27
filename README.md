@@ -19,3 +19,4 @@ Today I Learned 공부한 것들을 정리합니다.
 | **7** |**[ResourceLoader](./SpringCore/ResourceLoader.md)**|
 | **8** |**[리소스 추상화](./SpringCore/리소스추상화.md)**|
 | **9** |**[Validation 추상화](./SpringCore/Validation추상화.md)**|
+| **10** |**[AOP개념](./SpringCore/AoP개념.md)**|
