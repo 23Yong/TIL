@@ -37,3 +37,4 @@ Today I Learned 공부한 것들을 정리합니다.
 | | **2** |**[서블릿](/SpringMVC/웹애플리케이션의이해/서블릿.md)**|
 | **MVC 프레임워크의 이해** | **1** | **[FrontController](/SpringMVC/MVC프레임워크의이해/front-controller_pattern.md)**|
 | | **2** |**[View 분리](/SpringMVC/MVC프레임워크의이해/view의분리.md)**|
+| | **3** |**[Model 추가](/SpringMVC/MVC프레임워크의이해/view의분리.md)**|
