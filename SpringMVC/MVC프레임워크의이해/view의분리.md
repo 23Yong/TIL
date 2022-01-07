@@ -9,7 +9,9 @@ dispatcher.forward(request, response);
 ```
 해당 코드들이 각 컨트롤러에 중복되는 문제가 발생한다. (JSP를 사용하는 경우)
 
+![](/img/V2.png)
 이 중복되는 부분을 분리하기 위해 View를 처리하는 객체를 두어 Controller는 View를 반환하고 FrontController에서 이를 받아 View를 처리하는 함수를 호출하고 forward하는 로직을 수행한다.
+
 
 ## View 분리 도입
 먼저 View를 처리하는 클래스를 만든다.
