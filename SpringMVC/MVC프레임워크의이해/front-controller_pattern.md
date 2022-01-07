@@ -25,7 +25,7 @@ public interface MyController {
 
 이제 프런트 컨트롤러를 만들어보자.
 ```java
-@WebServlet(name = "frontControllerServlet", urlPatterns = "/front-controller")
+@WebServlet(name = "frontControllerServlet", urlPatterns = "/front-controller/*")
 public class FrontControllerServlet extends HttpServlet {
 
     private Map<String, MyController> controllerMap = new HashMap<>();
