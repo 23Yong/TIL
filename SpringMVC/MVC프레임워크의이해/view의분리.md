@@ -39,6 +39,7 @@ public interface MyController {
 ```
 마지막으로 프런트 컨트롤러를 만든다. 
 ```java
+@WebServlet(name = "frontControllerServlet", urlPatterns = "/front-controller/*")
 public class FrontControllerServlet extends HttpServlet {
 
     private Map<String, MyController> controllerMap = new HashMap<>();
