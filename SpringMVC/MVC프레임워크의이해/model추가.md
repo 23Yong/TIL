@@ -1,7 +1,7 @@
 # Model 추가
 컨트롤러의 입장에서 보면 사용하지도 않는 HttpServletRequest, HttpServletResponse를 인자로 받고 있다. 요청 파라미터를 자바의 Map 형태로 넘기도록 하면 지금 구조에서 각 컨트롤러가 서블릿을 몰라도 동작할 수 있다.
 그리고 request 객체 대신 Map객체를 만들어 반환하도록 한다. 
-
+![](/img/V3.png)
 ## ModelView
 서블릿에 종속적인 컨트롤러가 아닌 서블릿의 종속성을 제거한 컨트롤러를 만들기 위해 Model을 직접만들고, View이름 까지 전달하는 객체를 만들어보자.
 
