@@ -39,3 +39,4 @@ Today I Learned 공부한 것들을 정리합니다.
 | | **2** |**[View 분리](/SpringMVC/MVC프레임워크의이해/view의분리.md)**|
 | | **3** |**[Model 추가](/SpringMVC/MVC프레임워크의이해/view의분리.md)**|
 | | **4** |**[단순하고 실용적인 컨트롤러](/SpringMVC/MVC프레임워크의이해/단순실용컨트롤러.md)**|
+| | **5** |**[다양한 컨트롤러의 적용](/SpringMVC/MVC프레임워크의이해/여러컨트롤러적용.md)**|
