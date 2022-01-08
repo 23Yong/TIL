@@ -35,7 +35,7 @@ HttpServletRequest가 제공하는 파라미터는 프런트 컨트롤러가 par
 public class BookSaveController implements MyController {
 
     @Override
-    public void process(Map<String, String> paramMap) {
+    public ModelView process(Map<String, String> paramMap) {
         String name = paramMap.get("name");
         String description = paramMap.get("description");
 
