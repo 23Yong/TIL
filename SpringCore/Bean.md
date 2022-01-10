@@ -1,5 +1,5 @@
 # Bean
-먼저, 다음 내용은 스프링 Document을 읽은 것을 필요한 부분만 해석해 본 것이다.
+먼저, 다음 내용은 스프링 Documentation을 읽은 것을 필요한 부분만 해석해 본 것이다.
 
 Spring의 IoC컨테이너는 하나이상의 빈을 관리한다. IoC컨테이너 안에 있는 빈들은 Configuration metadata가 컨테이너에 제공하는 데이터로 인해 만들어진다. 
 
