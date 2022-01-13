@@ -99,3 +99,5 @@ PRG를 사용하지 않으면 POST로 주문 후 새로 고침으로 중복 주�
 서비스가 이용 불가능한 상태이다.
 - 서버가 일시적인 과부하 또는 예정된 작업으로 잠시 요청처리를 할 수 없다.
 
+## 참고자료
+[모든 개발자를 위한 HTTP웹 기본 지식](https://www.inflearn.com/course/http-%EC%9B%B9-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/dashboard)
