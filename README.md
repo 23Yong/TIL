@@ -50,3 +50,8 @@ Today I Learned 공부한 것들을 정리합니다.
 | | **4** | **[메시지 컨버터](/SpringMVC/SpringMVC/HttpMessageConverter.md)** |
 | | **5** | **[HTTP Response](/SpringMVC/SpringMVC/Http응답.md)** |
 | | **6** | **[RequestMappingHandlerAdapter의 구조](/SpringMVC/SpringMVC/RequestMappingHandlerAdapter구조.md)** |
+
+## JPA
+|  **번호**  | **제목** |
+| --------- | ------ |
+| **1** | **[엔티티매니저와 영속성 컨텍스트](/JPA/엔티티매니저.md)**
