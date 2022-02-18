@@ -55,6 +55,8 @@ Today I Learned 공부한 것들을 정리합니다.
 | | **9** | **[로그인](/SpringMVC/SpringMVC2/로그인.md)** |
 | | **10** | **[필터와 인터셉터](/SpringMVC/SpringMVC2/필터와인터셉터.md)** |
 | | **11** | **[예외처리-서블릿](/SpringMVC/SpringMVC2/예외처리_서블릿.md)** |
+| | **12** | **[예외처리-@ExceptionHandler](/SpringMVC/SpringMVC2/@ExceptionHandler.md)** |
+
 ## JPA
 |  **번호**  | **제목** |
 | --------- | ------ |
