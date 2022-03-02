@@ -82,6 +82,7 @@ Today I Learned 공부한 것들을 정리합니다.
 | **3** | **[쿼리메서드 - 페이징과 정렬](/JPA/SpringDataJPA/쿼리메서드_페이징과정렬.md)** |
 | **4** | **[쿼리메서드 - 벌크성 수정 쿼리](/JPA/SpringDataJPA/벌크성수정쿼리.md)** |
 | **5** | **[Auditing](/JPA/SpringDataJPA/Auditing.md)** |
+| **6** | **[스프링 데이터 JPA 구현체](/JPA/SpringDataJPA/스프링데이터JPA분석.md)** |
 
 ## 개발하다가 궁금한 것들..
 | **번호** | **제목** |
