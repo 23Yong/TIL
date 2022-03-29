@@ -117,3 +117,97 @@ dogProxy Class = class com.sun.proxy.$Proxy9
 JDK 동적 프록시는 인터페이스가 필수적이다. 인터페이스 없이 클래스만 있는 경우는 어떻게 해야할까? 이것은 JDK 동적 프록시를 통해서는 어렵고 `CGLIB`라는 바이트코드를 조작하는 특별한 라이브러리를 사용해야 한다.
 
 ## CGLIB
+CBLIB는 바이트코드를 조작해 동적으로 클래스를 생성하는 기술을 제공해주는 라이브러리로 인터페이스가 아닌 `구체 클래스`를 대상으로 동작이 가능하다. 상속방식을 이용해 Proxy화 할 메서드를 오버라이딩 하는 방식이기 때문에 private 혹은 final 키워드가 들어간 경우 Proxy에서 해당 메서드에 대한 Aspect를 적용할 수 없다.
+
+코드를 통해 이해해보자. 먼저 JDK 동적 프록시와는 달리 인터페이스가 굳이 필요없기 때문에 클래스만 만들어준다.
+```java
+public class Dog {
+
+    public String sound() {
+        System.out.println("강아지는 왈왈");
+        return "왈왈";
+    }
+}
+
+```
+
+JDK 동적 프록시에 `InvocationHandler`가 있듯이 CGLIB에는 `MethodInterceptor`가 있다. 
+```java
+@Slf4j
+public class TimeMethodInterceptor implements MethodInterceptor {
+
+    private final Object target;
+
+    public TimeMethodInterceptor(Object target) {
+        this.target = target;
+    }
+
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        long startTime = System.currentTimeMillis();
+        log.info("Time Proxy 시작");
+
+        Object result = method.invoke(target, objects);
+
+        long endTime = System.currentTimeMillis();
+        long resultTime = endTime - startTime;
+
+        log.info("resultTime = {}", resultTime);
+        return result;
+    }
+}
+```
+- o : CGLIB가 적용된 객체
+- method : 호출된 메서드
+- objects : 메서드를 호출하면서 전달된 인수들
+- methodProxy : 메서드 호출에 사용
+
+이제 테스트 코드를 작성해보자.
+```java
+@Slf4j
+public class Cglib {
+
+    @Test
+    void cglib() {
+        Dog dog = new Dog();
+
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(Dog.class);
+        enhancer.setCallback(new TimeMethodInterceptor(dog));
+        Dog proxy = (Dog) enhancer.create();
+
+        proxy.sound();
+
+        log.info("targetClass = {}", dog.getClass());
+        log.info("proxyClass = {}", proxy.getClass());
+    }
+}
+```
+```
+Time Proxy 시작
+강아지는 왈왈
+resultTime = 10
+targetClass = class hello.proxy.cg.code.Dog
+proxyClass = class hello.proxy.cg.code.Dog$$EnhancerByCGLIB$$3a8a3b6e
+```
+출력결과를 통해 프록시가 잘 적용되는 것을 확인할 수 있다.
+
+CGLIB를 통해 프록시를 생성할 때는 두 가지 작업이 필요하다.
+1. `net.sf.cglib.proxy.Enhancer` 클래스를 사용해 프록시 객체 생성
+2. `net.sf.cglib.proxy.Callback` 클래스를 사용해 프록시 객체 조작
+
+- CGLIB는 Enhancer를 사용해 프록시를 생성하기 떄문에 `new Enhancer()`를 통해 Enhancer 인스턴스를 생성해준다.
+- CGLIB는 구체 클래스를 상속받아 프록시를 생성하기 때문에 상위클래스를 `setSuperClass(Dog.class)`를 통해 지정해준다.
+- 프록시 객체를 조작하기 위해 `setCallback(new TimeMethodInterceptor)`를 통해 프록시에 적용할 로직을 할당해준다.
+- 이후 `create()`를 통해 프록시 객체를 생성한다. 앞에서 `setSuperClass()`를 통해 설정한 클래스를 상위 클래스로 상속 받아 만들어진다.
+
+출력결과에서도 알 수 있듯이 CGLIB를 통해 프록시가 만들어진 것을 확인할 수 있다.
+
+### CGLIB의 제약
+클래스 기반 프록시는 상속을 이용하기 때문에 몇 가지 제약이 존재한다.
+- CGLIB는 부모 클래스로부터 자식 클래스를 동적으로 생성하기 때문에 부모 클래스의 기본 생성자가 필요하다.
+- 클래스에 `final`이 붙으면 상속이 불가능하기 때문에 CGLIB에서는 예외가 발생한다.
+- 마찬가지로 메서드에 `final`이 붙으면 해당 메서드를 오버라이딩 할 수 없기 때문에 프록시 로직이 동작하지 않는다.
+
+## 참고 자료
+[인프런 - 스프링 핵심원리_고급편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
