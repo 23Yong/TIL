@@ -124,3 +124,82 @@ class hello.proxy.advice.code.Cat$$EnhancerBySpringCGLIB$$168c1be5
 위의 ~~$$EnhancerBySpringCGLIB\$$~~에 의해 CGLIB를 통해 프록시가 생성된 것을 확인할 수 있다.
 
 ### Pointcut
+포인트컷은 어디에 부가기능을 적용할지, 어디에 부가기능을 적용하지 않을지 판단하는 필터링 로직이다.
+
+### Advisor
+단순하게 하나의 어드바이스와 하나의 포인트컷을 가지고 있는 것이다. 코드로 살펴보자.
+
+```java
+@Test
+void advisorTest() {
+    Animal target = new Dog();
+    ProxyFactory proxyFactory = new ProxyFactory(target);
+
+    DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(Pointcut.TRUE, new TimeAdvice());
+
+    proxyFactory.addAdvisor(advisor);
+    Animal proxy = (Animal) proxyFactory.getProxy();
+
+    proxy.sound();
+}
+```
+```
+TimeProxy 실행
+왈왈
+TimeProxy 종료, resultTime = 0
+```
+Advisor 인터페이스의 가장 일반적인 구현체인 `DefaultPointcutAdvisor`를 사용했다. 생성자에는 하나의 포인트컷과 어드바이스를 넣어주면 된다. 
+
+`Pointcut.TRUE`는 항상 true를 반환하는 포인트컷이다. 어디든 부가기능을 적용하겠다는 소리이다. 
+
+이번에는 하나의 프록시에 여러 어드바이저를 적용해보자.
+먼저 어드바이스 2개를 만든다.
+```java
+static class Advice1 implements MethodInterceptor {
+
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        System.out.println("advice1 호출");
+        return invocation.proceed();
+    }
+}
+
+static class Advice2 implements MethodInterceptor {
+
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        System.out.println("advice2 호출");
+        return invocation.proceed();
+    }
+}
+```
+이후 테스트코드를 작성해보자.
+```java
+@Test
+void multiAdvisorTest() {
+    DefaultPointcutAdvisor advisor1 = new DefaultPointcutAdvisor(Pointcut.TRUE, new Advice1());
+    DefaultPointcutAdvisor advisor2 = new DefaultPointcutAdvisor(Pointcut.TRUE, new Advice2());
+
+    // 프록시 생성
+    Animal target = new Dog();
+    ProxyFactory proxyFactory = new ProxyFactory(target);
+    proxyFactory.addAdvisor(advisor2);
+    proxyFactory.addAdvisor(advisor1);
+    Animal proxy = (Animal) proxyFactory.getProxy();
+
+    // 실행
+    proxy.sound();
+}
+```
+```
+advice2 호출
+advice1 호출
+왈왈
+```
+출력결과를 보면 등록하는 순서대로 어드바이저가 호출되는 것을 확인할 수 있다. 스프링 AOP를 적용할 때 지금처럼 프록시는 하나만 만들고, 하나의 프록시에 여러 어드바이저를 적용하는 것을 기억하자. 다시 말하면, 하나의 target에 여러 AOP가 동시에 적용되어도, 스프링의 AOP는 하나의 프록시만 만든다.
+
+일단은 프록시에 맞추어 용어가 설명되어 있다. 이후 AOP에 맞추어 다시 정리해야겠다..
+
+## 참고 자료
+
+[인프런 - 스프링 핵심원리_고급편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
