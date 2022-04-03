@@ -25,6 +25,7 @@ Today I Learned 공부한 것들을 정리합니다.
 | **3** |**[콘텐츠협상](/HTTP/content_negotiation.md)**|
 | **4** |**[쿠키](/HTTP/쿠키.md)**|
 | **5** |**[캐시](/HTTP/캐시.md)**|
+
 ## Spring Core
 | **번호** |  **제목**  |
 | ------ | ------------------------------------------------------------------ |
@@ -41,6 +42,11 @@ Today I Learned 공부한 것들을 정리합니다.
 | **9** |**[Validation 추상화](./SpringCore/Validation추상화.md)**|
 | **10** |**[AOP개념](./SpringCore/AoP개념.md)**|
 | **11** |**[AOP활용](./SpringCore/AoP활용.md)**|
+
+## Spring Core 2
+| **번호** |  **제목**  |
+| ------ | ------------------------------------------------------------------ |
+| **1** |**[JDK Dynamic Proxy와 CGLIB](./SpringCore/SpringCore_Advanced/JDK동적프록시_vs_CGLIB.md)**|
 
 ## Spring MVC
 | **파트** |  **번호**  | **제목** |
