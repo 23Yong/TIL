@@ -13,11 +13,11 @@
 
 그러면 이 `DelegatingFilterProxy`는 어디서 생성되는 것인지 알아보자.
 
-![](2022-09-21-22-25-50.png)
+![](./img/2022-09-21-22-25-50.png)
 
 `SecurityFilterAutoConfiguration`에서 `DelgatingFilterProxyRegistrationBean` 빈을 등록해준다.
 
-![](2022-09-21-22-30-45.png)
+![](./img/2022-09-21-22-30-45.png)
 
 그러면 `DelgatingFilterProxyRegistrationBean`에서 targetBeanName을 springSecurityFilterChain으로 등록시켜주는데, `FilterChainProxy`의 이름이다. (일단 알아만 놓자.)
 
