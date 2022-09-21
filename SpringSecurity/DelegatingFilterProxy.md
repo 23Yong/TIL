@@ -41,7 +41,7 @@ RegistrationBean의 getDescription 메서드가 호출되고,
 
 getDescription 메서드에서 getFilter 메서드가 호출되는 것을 확인할 수 있다.
 
-그러면 이제 우리가 알다 `DelegatingFilterProxyRegistrationBean`이 `DelegatingFilterProxy`을 생성해준다!
+그러면 이제 우리가 알다시피 `DelegatingFilterProxyRegistrationBean`이 `DelegatingFilterProxy`을 생성해준다!
 
 ## 정리
 스프링 시큐리티를 사용하면 `DelegatingFilterProxy`가 생성이 되는데, <br>
