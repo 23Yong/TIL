@@ -9,6 +9,7 @@ Today I Learned 공부한 것들을 정리합니다.
 | **3** |**[enum](./자바/enum.md)**|
 | **4** |**[람다식](./자바/람다식.md)**|
 | **5** |**[ThreadLocal](./자바/ThreadLocal.md)**|
+| **6** |**[String은 왜 불변객체 인가](./자바/String.md)**|
 
 ## 백기선님의 LIVE-STUDY
 | **번호** |  **제목**  |
