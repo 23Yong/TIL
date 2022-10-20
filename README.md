@@ -12,6 +12,7 @@ Today I Learned 공부한 것들을 정리합니다.
 | **6** |**[String은 왜 불변객체 인가](./자바/String.md)**|
 | **7** |**[GC란?](./자바/GC.md)**|
 | **8** |**[자바는 Call By Reference가 없다](./자바/CallByValue.md)**|
+| **9** |**[자바에서의 직렬화](./자바/직렬화.md)**|
 
 ## 백기선님의 LIVE-STUDY
 | **번호** |  **제목**  |
