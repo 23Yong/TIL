@@ -88,6 +88,7 @@ Today I Learned 공부한 것들을 정리합니다.
 | | **11** | **[예외처리-서블릿](/SpringMVC/SpringMVC2/예외처리_서블릿.md)** |
 | | **12** | **[예외처리-@ExceptionHandler](/SpringMVC/SpringMVC2/@ExceptionHandler.md)** |
 | | **13** | **[스프링의 타입컨버터](/SpringMVC/SpringMVC2/스프링Converter.md)** |
+| | **14** | **[MultipartResolver](/SpringMVC/SpringMVC2/MultipartResolver.md)** |
 
 ## JPA
 |  **번호**  | **제목** |
